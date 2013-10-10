@@ -36,6 +36,10 @@ class XOCli
     self.winner = self.board.winner?
   end
 
+  def get_winner
+    self.board.layout.flatten.count("x") > self.board.layout.flatten.count("o") ? "Player 1" : "Player 2"
+  end
+
   def play
     while !self.winner
       system('clear')
@@ -44,7 +48,7 @@ class XOCli
     end
     system('clear')
     self.print_board(self.board.layout)
-    puts "Winner!"
+    puts "Winner! Great job #{self.get_winner}"
   end
 end
 
